@@ -6,6 +6,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const connectDB = require('./config/db');
+const eventTypeRoutes = require('./routes/eventType');
 
 const app = express();
 connectDB();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/uploads', express.static('uploads'));
 app.use('/api/user', userRoutes);
+app.use('/api/event-types', eventTypeRoutes);
 
 // Health-check route
 app.get('/api', (_, res) => res.json({ msg: 'API running 🚀' }));

@@ -20,7 +20,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="event-types" element={<div className="p-6">Event Types page coming soon</div>} />
+          {/* <Route path="event-types" element={<div className="p-6">Event Types page coming soon</div>} />
+          <Route path="bookings" element={<div className="p-6">bookings page coming soon</div>} /> */}
 
           {/* Protected nested routes */}
           <Route

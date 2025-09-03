@@ -11,9 +11,9 @@ import {
 
 const navItems = [
   { name: 'Dashboard',  path: '/dashboard', icon: HomeIcon },
-  { name: 'Event Types',path: '/event-types',icon: CalendarDaysIcon },
-  { name: 'Bookings',   path: '/bookings',   icon: ListBulletIcon },
-  { name: 'Settings',   path: '/settings',   icon: Cog6ToothIcon },
+  { name: 'Event Types',path: '/dashboard/event-types',icon: CalendarDaysIcon },
+  { name: 'Bookings',   path: '/dashboard/bookings',   icon: ListBulletIcon },
+  { name: 'Settings',   path: '/dashboard/settings',   icon: Cog6ToothIcon },
 ];
 
 export default function Sidebar({ open, setOpen }) {
