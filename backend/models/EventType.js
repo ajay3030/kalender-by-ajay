@@ -42,12 +42,21 @@ eventTypeSchema.index({ userId: 1, slug: 1 }, { unique: true });
 eventTypeSchema.plugin(uniqueValidator, { message: '{PATH} must be unique.' });
 
 /* Auto-generate slug if missing */
-eventTypeSchema.pre('validate', function (next) {
+// backend/models/EventType.js
+eventTypeSchema.pre('validate', async function (next) {
   if (!this.slug) {
-    this.slug = this.title
+    const base = this.title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
+    let candidate = base;
+    let counter = 1;
+    const Model = this.constructor;
+    while (await Model.findOne({ userId: this.userId, slug: candidate })) {
+      candidate = `${base}-${counter}`;
+      counter += 1;
+    }
+    this.slug = candidate;
   }
   next();
 });

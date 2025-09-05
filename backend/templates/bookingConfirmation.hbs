@@ -1,0 +1,16 @@
+<!-- backend/templates/bookingConfirmation.hbs -->
+<p>Hello {{#if isHost}}Host{{else}}{{clientName}}{{/if}},</p>
+
+<p>{{#if isHost}}{{clientEmail}} has booked{{else}}You have confirmed{{/if}}:</p>
+<ul>
+  <li>Event: <strong>{{eventTitle}}</strong></li>
+  <li>Date / Time: {{dateTime}} ({{timezone}})</li>
+  <li>Duration: {{duration}} min</li>
+</ul>
+
+{{#unless isHost}}
+<p>To cancel or reschedule, use this link:</p>
+<p><a href="{{cancellationLink}}">Cancel / reschedule</a></p>
+{{/unless}}
+
+<p>Thanks,<br>Calendly-Clone Team</p>

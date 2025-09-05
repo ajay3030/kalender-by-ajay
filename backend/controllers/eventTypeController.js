@@ -10,6 +10,7 @@ dayjs.extend(utc);
 const createEventType = async (req, res) => {
   try {
     const data = { ...req.body, userId: req.user.id };
+    console.log('EventType loaded:', typeof EventType);
     const event = await EventType.create(data);
 
     // bulk-insert availability if provided
@@ -56,9 +57,8 @@ const updateEventType = async (req, res) => {
 
 /* SOFT DELETE */
 const deleteEventType = async (req, res) => {
-  const event = await EventType.findOneAndUpdate(
+  const event = await EventType.findOneAndDelete(
     { _id: req.params.id, userId: req.user.id },
-    { isActive: false }
   );
   if (!event) return res.status(404).json({ msg: 'Event type not found' });
   res.json({ msg: 'Deleted' });

@@ -3,11 +3,13 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import Sidebar from '../Navigation/Sidebar';
 import Header from '../Navigation/Header';
+import { EventTypeProvider } from '../../context/EventTypeContext'  
 
 export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
+    <EventTypeProvider>
     <div className="flex h-screen bg-gray-50">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
@@ -24,5 +26,6 @@ export default function DashboardLayout() {
         </main>
       </div>
     </div>
+    </EventTypeProvider>
   );
 }
